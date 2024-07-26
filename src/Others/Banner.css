@@ -1,0 +1,8 @@
+.banner {
+    width: 100vw; /* 100% of the viewport width */
+    height: 50vh; /* 50% of the viewport height */
+    background-image: url('../assets/images.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
