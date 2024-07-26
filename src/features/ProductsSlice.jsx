@@ -1,12 +1,11 @@
-import React from 'react'
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
 
-export const GetAllCategories = createAsyncThunk(
-    "GetAllCategories",
+export const ProductApi = createAsyncThunk(
+    "ProductApi",
     async(_,{rejectWithValue}) =>{
         try {
             const response = await fetch(
-              "https://fakestoreapi.com/products/categories",
+              "https://fakestoreapi.com/products",
               {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
@@ -25,14 +24,15 @@ export const GetAllCategories = createAsyncThunk(
 export const ProductsSlice = createSlice({
     name:"ProuctsSlice",
     initialState:{
-        categories:[],
+        Products:[],
         loading:false,
         error:null
     },
     extraReducers:(builder)=>{
-        builder.addCase(GetAllCategories.pending,(state)=>{state.loading = true})
-        builder.addCase(GetAllCategories.fulfilled,(state)=>{state.loading = false,state.categories.push(action.payload)})
-        builder.addCase(GetAllCategories.rejected,(state)=>{state.loading = false,state.error = action.payload})
+        builder
+        .addCase(ProductApi.pending,(state)=>{state.loading = true;})
+        .addCase(ProductApi.fulfilled,(state,action)=>{state.loading = false,state.Products.push(action.payload)})
+        .addCase(ProductApi.rejected,(state,action)=>{state.loading = false,state.error = action.payload})
 
     }
 })
