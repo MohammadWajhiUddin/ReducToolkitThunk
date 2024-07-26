@@ -5,6 +5,7 @@ import HomeScreen from './Components/HomeScreen';
 import GetAllUsers from './Components/GetAllUsers';
 import GetSingleUser from './Components/GetSingleUser'
 import LoginUser from './Components/LoginUser';
+import ProductDetails from './Components/ProductDetails';
 const App = ()=>{
   return(
     <Router>
@@ -14,6 +15,8 @@ const App = ()=>{
         <Route path="/" element={<LoginUser />} />
         <Route path="/GetAllUsers" element={<GetAllUsers />} />
         <Route path="/GetSingleUser/:id" element={<GetSingleUser />} />
+        <Route path="/ProductDetails/:id" element={<ProductDetails />} />
+
       </Routes>
   </Router>
   )
